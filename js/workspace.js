@@ -18,9 +18,9 @@ module.exports = class Workspace {
         this.addGate({name: 'cnot', qubits: 2, matrix: quantum.cnot, title: 'Controlled Not'}, true);
         this.addGate({name: 'control', title: 'Control'}, true);
         this.addGate({name: 'swap', qubits: 2, matrix: quantum.swap, title: 'Swap'}, true);
-        this.addGate({name: 'r2', qubits: 1, matrix: quantum.r2, title: 'Pi/2 Phase Rotatation'}, true);
-        this.addGate({name: 'r4', qubits: 1, matrix: quantum.r4, title: 'Pi/4 Phase Rotatation'}, true);
-        this.addGate({name: 'r8', qubits: 1, matrix: quantum.r8, title: 'Pi/8 Phase Rotatation'}, true);
+        this.addGate({name: 'r2', qubits: 1, matrix: quantum.r2, title: 'Pi/2 Phase Rotation'}, true);
+        this.addGate({name: 'r4', qubits: 1, matrix: quantum.r4, title: 'Pi/4 Phase Rotation'}, true);
+        this.addGate({name: 'r8', qubits: 1, matrix: quantum.r8, title: 'Pi/8 Phase Rotation'}, true);
         this.addGate({name: 'qft', qubits: Infinity, fn: quantum.qft, title: 'Quantum Fourier Transform'}, true);
         this.addGate({name: 'srn', qubits: 1, matrix: quantum.srn, title: 'Sqrt(Not)'}, true);
     }

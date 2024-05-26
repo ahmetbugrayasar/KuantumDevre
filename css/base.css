@@ -22,8 +22,20 @@ text {
     text-transform: uppercase;
     fill: rgba(0,0,0,0.5);
   }
+
+#content-div{
+    clear:both; 
+}  
 #content {
+    border-style: solid 10px red;
     margin-left: 10px;
+}
+#canvas{
+    margin: 0px;
+    width: 100%;
+    height: auto;
+
+
 }
 canvas:focus {
     outline: 0;

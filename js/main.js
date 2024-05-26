@@ -241,9 +241,6 @@ window.onload = () => {
         examplesEl.appendChild(li);
     });
 
-    document.querySelector('#about').onclick = evt => {
-        document.querySelector('#modal').style.display = 'block';
-    };
 
     document.querySelector('#modal').onclick = evt => {
         document.querySelector('#modal').style.display = 'none';
@@ -254,78 +251,5 @@ window.onload = () => {
         evt.stopPropagation();
     };
 
-
-    document.querySelector('#synth-config').onclick = evt => {
-        const currentConfig = synth.getSynthesisConfig();
-        document.querySelector('#config_num_of_ants').value = currentConfig.numOfAnts;
-        document.querySelector('#config_num_of_iterations').value = currentConfig.numOfIterations;
-        document.querySelector('#config_alpha').value = currentConfig.alpha;
-        document.querySelector('#config_beta').value = currentConfig.beta;
-        document.querySelector('#config_evaporation_rate').value = currentConfig.evaporationRate;
-        document.querySelector('#config_local_loops').value = currentConfig.localLoops;
-        document.querySelector('#config_search_depth').value = currentConfig.searchDepth;
-        document.querySelector('#config_base_gate').value = currentConfig.baseGate;
-
-        document.querySelector('#revsynth-config-modal').style.display = 'block';
-    };
-    document.querySelector('#revsynth-config-modal-close').onclick = evt => {
-        document.querySelector('#revsynth-config-modal').style.display = 'none';
-    };
-    document.querySelector('#submit-synthesis-config').onclick = evt => {
-        const newConfig = {
-            numOfAnts: parseInt(document.querySelector('#config_num_of_ants').value),
-            numOfIterations: parseInt(document.querySelector('#config_num_of_iterations').value),
-            alpha: parseFloat(document.querySelector('#config_alpha').value),
-            beta: parseFloat(document.querySelector('#config_beta').value),
-            evaporationRate: parseFloat(document.querySelector('#config_evaporation_rate').value),
-            localLoops: parseInt(document.querySelector('#config_local_loops').value),
-            searchDepth: parseInt(document.querySelector('#config_search_depth').value),
-            disableNegativeControl: true,
-            baseGate: document.querySelector('#config_base_gate').value,
-        };
-        synth.updateSynthesisConfig(newConfig);
-
-        window.alert('Configuration has been successfully updated');
-        document.querySelector('#revsynth-config-modal').style.display = 'none';
-    };
-
-    const renderTruthTable = (linesCount) => {
-        const tt = truthTable.renderInput(linesCount);
-        document.querySelector('#synth-lines-count').value = linesCount;
-        document.querySelector('#synth-exec-tt').innerHTML = tt;
-        document.querySelector('#revsynth-exec-modal').style.display = 'block';
-    };
-
-    document.querySelector('#synth-exec-2').onclick = evt => renderTruthTable(2);
-    document.querySelector('#synth-exec-3').onclick = evt => renderTruthTable(3);
-    document.querySelector('#synth-exec-4').onclick = evt => renderTruthTable(4);
-
-    document.querySelector('#revsynth-exec-modal-close').onclick = evt => {
-        document.querySelector('#revsynth-exec-modal').style.display = 'none';
-    };
-
-    document.querySelector('#submit-synthesis').onclick = evt => {
-        const shouldSubmit = window.confirm('Please make sure you saved your current workspace before proceeding. Synthesis result will replace it');
-        if (!shouldSubmit) {
-            return;
-        }
-
-        document.querySelector('#revsynth-exec-modal').style.display = 'none';
-        document.querySelector('#synth-loading-modal').style.display = 'block';
-
-        let tt;
-        try {
-            tt = truthTable.build(parseInt(document.querySelector('#synth-lines-count').value));
-        } catch (err) {
-            window.alert(err);
-            return;
-        }
-
-        synth.synthesize(tt, function(res) {
-            app.loadWorkspace(res);
-
-            document.querySelector('#synth-loading-modal').style.display = 'none';
-        });
-    };
 
 };
