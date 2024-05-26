@@ -1,0 +1,15 @@
+{
+    "name": "quantum-circuit-simulator",
+    "devDependencies": {
+        "babel-preset-es2015": "latest",
+        "babelify": "8",
+        "browserify": "latest"
+    },
+    "scripts": {
+        "build": "browserify js/main.js -o js/bundle.js -t [ babelify --presets [ es2015 ] ]"
+    },
+    "dependencies": {
+        "@babel/core": "^6.0.0-bridge.1",
+        "babel-core": "^6.26.3"
+    }
+}
