@@ -48,6 +48,7 @@ canvas:focus {
     position: relative;
     margin: 5px;
     display: inline-block;
+    color: transparent;
 }
 #toolbar div.gate > div {
     position: absolute;
@@ -57,6 +58,8 @@ canvas:focus {
     width: 40px;
     height: 40px;
     opacity: 0;
+    background-color: #79f;
+
 }
 #toolbar div.gate:hover > div {
     background-color: #79f;
@@ -107,14 +110,16 @@ canvas:focus {
 #menubar {
     width: 100%;
     margin-bottom: 10px;
-    background: #aaa;
-    border-bottom: solid 1px #999;
+    background: transparent;
+   
     color: #fff;
     font-family: "proxima-nova", sans-serif;
     font-size: 16px;
 }
 #menubar > li {
+    background-color: transparent;
     margin-right: 2px;
+    border: solid 1px #999;
 }
 ul.drop a {
     display:block;
@@ -138,7 +143,7 @@ ul.drop li {
     vertical-align: middle;
     zoom: 1;
     padding: 2px 10px;
-    background: #aaa;
+    background: #392C8C;
 }
 ul.drop li.hover, ul.drop li:hover {
     position: relative;
